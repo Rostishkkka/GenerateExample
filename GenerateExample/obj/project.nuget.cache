@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nj25IVJoMKLM+aLxhSl0ZuvAk6QZ2agT0tqKA72wLx4Mg+5xSE81AGv6ZlYNrsap2vnf34WiiPjVbgjcCl/VxQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Rost\\Files\\MyProect\\C#\\GenerateExample\\GenerateExample\\GenerateExample.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Rost\\.nuget\\packages\\modernwpfui\\0.9.6\\modernwpfui.0.9.6.nupkg.sha512"
+  ],
+  "logs": []
+}

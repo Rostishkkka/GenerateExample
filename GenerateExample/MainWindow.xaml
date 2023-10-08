@@ -1,0 +1,79 @@
+﻿<Window x:Class="GenerateExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GenerateExample"
+        mc:Ignorable="d"
+        Title="Реши примеры" Height="489" Width="867"
+        Background="Gray"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        MinWidth="800" MinHeight="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Height="80">
+            <TextBox x:Name="countExampleBox" Margin="20 0 0 0"
+                     ui:ControlHelper.PlaceholderText="Кол-во примеров" Height="30"></TextBox>
+            <Button Content="Сгенерировать примеры"
+                    x:Name="generateBut"
+                    Margin="10 0 0 0"
+                    Click="GenerateBut_Click"/>
+            <Button Content="Показать ответы"
+                    x:Name="checkBut"
+                    Margin="10 0 0 0"
+                    Click="CheckBut_Click"/>
+            <ui:RadioButtons x:Name="modeRadio" Margin="10 0 0 0" Width="222">
+                <RadioButton GroupName="mode" Name="Base" Content="Базовый режим" 
+                             Checked="base_Checked"/>
+                <RadioButton GroupName="mode" Name="Table" Content="Режим таблицы умножения" 
+                             Checked="table_Checked"/>
+            </ui:RadioButtons>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="20 0 0 0" VerticalAlignment="Center" Orientation="Horizontal" Height="80">
+            <CheckBox x:Name="minusCheck" IsChecked="True" Height="20" Content="Вычитание"
+                       Unchecked="minusCheck_Unchecked"
+                       Checked="minusCheck_Checked"/>
+            <CheckBox x:Name="plusCheck" IsChecked="True" Height="20" Content="Сложение" 
+                      Unchecked="plusCheck_Unchecked"
+                      Checked="plusCheck_Checked"/>
+            <CheckBox x:Name="divisionCheck" IsChecked="True" Height="11" Content="Деление"
+                      Unchecked="divisionCheck_Unchecked"
+                      Checked="divisionCheck_Checked"/>
+            <CheckBox x:Name="multiCheck" IsChecked="True" Height="20" Content="Умножение"
+                      Unchecked="multiCheck_Unchecked"
+                      Checked="multiCheck_Checked"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2" Margin="20 10 0 0" >
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                <TextBlock FontSize="16">Попытка</TextBlock>
+                <TextBlock x:Name="numberText" FontSize="16" Margin="3 0 0 0">0</TextBlock>
+                <TextBlock x:Name="evaluationText" Margin="10 0 0 0" FontSize="16"></TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <DataGrid x:Name="exampleDataGrid"
+                      AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Extended" 
+                      SelectionUnit="CellOrRowHeader"
+                      LoadingRow ="exampleDataGrid_LoadingRow">
+                <DataGrid.Columns>
+                    <DataGridTextColumn DataGridColumn.IsReadOnly = "True" Header="ID" Binding="{Binding Path=id}"/>
+                    <DataGridTextColumn DataGridColumn.IsReadOnly = "True" Header="Пример" Binding="{Binding Path=example}"/>
+                    <DataGridTextColumn DataGridColumn.IsReadOnly = "False" Header="Ответ" Binding="{Binding Path=answer}"/>
+                    <DataGridTextColumn DataGridColumn.IsReadOnly = "True" Header="Правильный ответ" Binding="{Binding Path=tryAnswer}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>
